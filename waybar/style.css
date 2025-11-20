@@ -1,0 +1,179 @@
+* {
+  min-height: 0;
+  min-width: 0;
+  font-family: "Adwaita Sans", "MonaspiceNe Nerd Font Propo";
+  font-size: 11px;
+  font-weight: 600;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+#waybar {
+  transition-property: background-color;
+  transition-duration: 0.3s;
+  /* background-color: #1e1e2e; */
+  /* background-color: #181825; */
+  /*#background-color: #1a1c1b; */
+  /* background-color: rgba(24, 24, 37, 0.6); */
+  /*background-color: transparent;*/
+  background: transparent;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition-property: background-color;
+  transition-duration: .5s;  
+}
+
+#waybar > box {
+    /* border-radius: 8px; */
+    /* margin: 8px; */
+  /* box-shadow: 1 1 3 1px #151515; */
+}
+
+#workspaces button {
+  /*padding: 0.3rem 0.6rem;*/
+  padding: 0 0.6rem;
+  margin: 0.2rem;
+  /*margin: 0.4rem 0.25rem;*/
+  font-size: 9px;
+  border-radius: 50%;
+  /* background-color: #181825; */
+  /*background-color: #1e1e06;*/
+  color: #fdf0f0;
+}
+
+#workspaces button:hover {
+  color: #1e1e2e;
+  background-color: #cdd6f4;
+}
+
+#workspaces button.active {
+  background-color: #CF2E4E;
+}
+
+#workspaces button.urgent {
+  background-color: #1e1e2e;
+  color: #f38ba8;
+}
+
+#clock,
+#pulseaudio,
+#custom-logo,
+#custom-power,
+#custom-spotify,
+#custom-notification,
+#cpu,
+#tray,
+#upower,
+#battery,
+#network,
+#memory,
+#window,
+#mpris {
+  padding: 0.3rem 0.3rem;
+	/*
+  margin: 0.4rem 0.25rem;
+*/
+  /* border-radius: 6px; */
+  /* background-color: #181825; */
+  /* background-color: #1e1e2e; */
+}
+
+#cpu, #memory {
+  font-family: "Monaspace Neon", "MonaspiceNe Nerd Font Propo";
+}
+
+#custom-sep {
+  padding: 0px;
+  color: #585b70;
+}
+
+window#waybar.empty #window {
+  background-color: transparent;
+  color: red;
+}
+
+#cpu {
+    color: #94e2d5;
+}
+
+#memory {
+  color: #cba6f7;
+}
+
+#clock {
+  color: #74c7ec;
+}
+
+#clock.simpleclock {
+  color: #fa6868;
+}
+
+#window {
+  color: #cdd6f4;
+}
+
+#pulseaudio {
+  color: #b4befe;
+}
+
+#pulseaudio.muted {
+    /* color: #a6adc8; */
+    color: red;
+}
+
+#custom-logo {
+  color: #89b4fa;
+}
+
+#custom-power {
+    /* color: #f38ba8; */
+    color: #fa6868;
+    font-size: 14;
+    padding-right: 0.8rem;
+}
+
+tooltip {
+  background-color: rgba(48, 48, 64, 0.9);
+  border: 1px solid #555555;
+}
+
+tooltip * {
+  padding: 0.1rem 0.2rem;
+}
+
+#taskbar {
+  font-family: "Monaspace Neon", "MonaspiceNe Nerd Font Propo";
+}
+
+#taskbar button {
+  padding: 0.2rem;
+  margin: 0.2rem;
+  border-radius: 50%;
+  /* background-color: #181825; */
+  /*background-color: #1e1e06;*/
+  color: #cdd6f4;
+}
+
+#taskbar button:hover {
+  color: #1e1e2e;
+  background-color: #cdd6f4;
+}
+
+#taskbar button.active {
+  background-color: #485868;
+}
+
+#taskbar button.fullscreen {
+  background-color: #fa6868;
+}
+
+#tray menu {
+  padding: 0.5rem 0.5rem;
+  background-color: #181825;
+  border: 1px solid #555555;
+}
+
+#tray menu menuitem {
+  padding: 0.2rem 1.2rem;
+  border-radius: 5px;
+}

@@ -1,0 +1,6 @@
+
+@theme "spotlight-dark.rasi"
+
+* {
+	font: "Adwaita Sans 12";
+}

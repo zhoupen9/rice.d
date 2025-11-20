@@ -1,0 +1,186 @@
+{
+	"layer": "bottom",
+	"position": "top",
+	"height": 24,
+	"spacing": 6,
+	"exclusive": true,
+	"gtk-layer-shell": true,
+	"passthrough": false,
+	"fixed-center": true,
+	"modules-left": [
+		"hyprland/workspaces",
+		"hyprland/window"
+	],
+	"modules-center": [
+		"wlr/taskbar"
+	],
+	"modules-right": [
+		"custom/notification",
+        "custom/weather",
+		"cpu",
+		"memory",
+		"clock",
+		"clock#simpleclock",
+		"tray",
+		"upower",
+		"battery",
+		"network",
+		"pulseaudio",
+		"custom/power",
+	],
+	"hyprland/workspaces": {
+		"on-click": "activate",
+		"format": "{id}",
+		"all-outputs": true,
+		"disable-scroll": false,
+		"active-only": false,
+	},
+	"hyprland/window": {
+		"icon": true,
+		"icon-size": 18,
+		"format": "{title}",
+	},
+    "custom/notification": {
+	    "escape": true,
+        "exec": "/usr/bin/dunstctl count history",
+        "format": "󰡟 {text}",
+        "interval": 1,
+        "on-click": "/usr/bin/dunstctl history-pop",
+        "on-click-right": "/usr/bin/dunstctl context",
+        "on-click-middle": "/usr/bin/dunstctl history-clear"
+    },
+    "custom/weather": {
+        "exec": "/usr/local/bin/waybar-weather",
+        "return-type": "json",
+        "interval": 600
+    },
+	"wlr/taskbar": {
+		"format": "{icon}",
+		"icon-size": 16,
+		"tooltip-format": "{title}",
+		"on-click": "activate",
+		"on-click-middle": "close",
+		"ignore-list": [
+			"Alacritty"
+		],
+		"app_ids-mapping": {
+			"firefoxdeveloperedition": "firefox-developer-edition"
+		},
+		"rewrite": {
+			"Firefox Web Browser": "Firefox",
+		}
+	},
+	"tray": {
+		"icon-size": 16,
+		"show-passive-items": true,
+		"spacing": 10,
+	},
+	"clock#simpleclock": {
+		"tooltip": false,
+		"format": "󱑓 {:%H:%M}",
+	},
+	"clock": {
+		"format": " {:L%a %d %b}",
+		"calendar": {
+			"format": {
+				"days": "<span weight='normal'>{}</span>",
+				"months": "<span color='#cdd6f4'><b>{}</b></span>",
+				"today": "<span color='#f38ba8' weight='700'><u>{}</u></span>",
+				"weekdays": "<span color='#f9e2af'><b>{}</b></span>",
+				"weeks": "<span color='#a6e3a1'><b>W{}</b></span>",
+			},
+			"mode": "month",
+			"mode-mon-col": 1,
+			"on-scroll": 1,
+		},
+		"tooltip-format": "<span color='#cdd6f4'><tt>{calendar}</tt></span>",
+	},
+	"cpu": {
+		"format": "{icon}{usage:3}%",
+		"tooltip": true,
+		"interval": 1,
+        "format-icons": [
+            "<span color='#69ff94'>▁</span>", // green
+            "<span color='#2aa9ff'>▂</span>", // blue
+            "<span color='#f8f8f2'>▃</span>", // white
+            "<span color='#f8f8f2'>▄</span>", // white
+            "<span color='#ffffa5'>▅</span>", // yellow
+            "<span color='#ffffa5'>▆</span>", // yellow
+            "<span color='#ff9977'>▇</span>", // orange
+            "<span color='#dd532e'>█</span>"  // red
+        ]
+	},
+	"memory": {
+		"format": "{icon} {used:0.1f}G",
+        "format-icons": [
+            "<span color='#69ff94'>▁</span>", // green
+            "<span color='#2aa9ff'>▂</span>", // blue
+            "<span color='#f8f8f2'>▃</span>", // white
+            "<span color='#f8f8f2'>▄</span>", // white
+            "<span color='#ffffa5'>▅</span>", // yellow
+            "<span color='#ffffa5'>▆</span>", // yellow
+            "<span color='#ff9977'>▇</span>", // orange
+            "<span color='#dd532e'>█</span>"  // red
+        ],
+		"tooltip": true,
+	},
+	"network": {
+		"format": "{ifname}",
+		"format-wifi": " ",
+		"format-ethernet": "󰈀",
+		"format-disconnected": "󰌙",
+		"tooltip-format": "󰈀 {ifname} via {gwaddri}",
+		"tooltip-format-wifi": "  {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
+		"tooltip-format-ethernet": "󰈀 {ifname}\nIP: {ipaddr}\n up: {bandwidthUpBits} down: {bandwidthDownBits}",
+		"tooltip-format-disconnected": "Disconnected",
+		"max-length": 50,
+		"on-click": "alacritty --class dotfiles-floating -e nmtui",
+		"on-click-right": "~/dotfiles/.settings/networkmanager.sh"
+	},
+	"upower": {
+		"native-path": "hid-ec:2c:e2:f0:e8:69-battery",
+		"show-icon": true,
+		"icon-size": 11,
+		"hide-if-empty": true,
+		"tooltip": true,
+		"tooltip-spacing": 15
+	},
+	"battery": {
+		"states": {
+			"warning": 20,
+			"critical": 10
+		},
+		"format": "{icon} {capacity}%",
+		"format-charging": "  {capacity}%",
+		"format-plugged": "  {capacity}%",
+		"format-alt": "{icon} {time}",
+		"format-icons": [" ", " ", " ", " ", " "]
+	},
+	"pulseaudio": {
+		"format": "{icon} {volume}%",
+		"format-bluetooth": "{volume}% {icon} {format_source}",
+		"format-bluetooth-muted": "󰂲 {icon} {format_source}",
+		"format-muted": "",
+		"format-source": "{volume}% ",
+		"format-source-muted": "",
+		"format-icons": {
+			"headphone": " ",
+			"hands-free": " ",
+			"headset": "󰋎 ",
+			"phone": " ",
+			"portable": " ",
+			"car": " ",
+			"default": [" ", " ", " "]
+		},
+		"on-click": "pavucontrol"
+	},
+	"custom/sep": {
+		"format": "|",
+		"tooltip": false,
+	},
+	"custom/power": {
+		"tooltip": false,
+		"on-click": "wlogout -p layer-shell &",
+		"format": "󰐥",
+	},
+}
