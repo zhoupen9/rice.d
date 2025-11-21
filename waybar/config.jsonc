@@ -16,7 +16,6 @@
 	],
 	"modules-right": [
 		"custom/notification",
-        "custom/weather",
 		"cpu",
 		"memory",
 		"clock",
@@ -48,11 +47,6 @@
         "on-click": "/usr/bin/dunstctl history-pop",
         "on-click-right": "/usr/bin/dunstctl context",
         "on-click-middle": "/usr/bin/dunstctl history-clear"
-    },
-    "custom/weather": {
-        "exec": "/usr/local/bin/waybar-weather",
-        "return-type": "json",
-        "interval": 600
     },
 	"wlr/taskbar": {
 		"format": "{icon}",
