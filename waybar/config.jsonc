@@ -18,6 +18,7 @@
 		"custom/notification",
 		"cpu",
 		"memory",
+        "custom/clipboard",
 		"clock",
 		"clock#simpleclock",
 		"tray",
@@ -47,6 +48,13 @@
         "on-click": "/usr/bin/dunstctl history-pop",
         "on-click-right": "/usr/bin/dunstctl context",
         "on-click-middle": "/usr/bin/dunstctl history-clear"
+    },
+    "custom/clipboard": {
+       "format": " {text}",
+       "exec": "/usr/bin/cliphist list | wc -l",
+       "interval": 1,
+       "on-click": "/usr/bin/rofi -modi clipboard:~/.local/bin/cliphist-rofi-img -show clipboard -show-icons",
+       "on-click-middle": "/usr/bin/cliphist wipe"
     },
 	"wlr/taskbar": {
 		"format": "{icon}",
