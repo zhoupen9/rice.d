@@ -9,6 +9,10 @@
 	border: none;
 }
 
+button:hover {
+	box-shadow: none;
+}
+
 #waybar {
 	transition-property: background-color;
 	transition-duration: 0.3s;
@@ -19,14 +23,14 @@
 	/*background-color: transparent;*/
 	background: transparent;
 	background-color: rgba(0, 0, 0, 0.2);
-	transition-property: background-color;
-	transition-duration: .5s;  
 }
 
 #waybar > box {
 	/* border-radius: 8px; */
 	/* margin: 8px; */
 	/* box-shadow: 1 1 3 1px #151515; */
+	border: none;
+	box-shadow: none;
 }
 
 #workspaces button {
@@ -35,14 +39,16 @@
 	margin: 0.2rem;
 	/*margin: 0.4rem 0.25rem;*/
 	font-size: 9px;
-	border-radius: 50%;
+	/*border-radius: 50%; */
 	/* background-color: #181825; */
 	/*background-color: #1e1e06;*/
 	color: #fdf0f0;
+	/*border: none;*/
 }
 
 #workspaces button:hover {
-	color: #1e1e2e;
+	/*color: #1e1e2e;*/
+	color: #ee5e5e;
 	background-color: #cdd6f4;
 }
 
@@ -146,32 +152,45 @@ tooltip * {
 }
 
 #taskbar button {
+	transition: none;
 	padding: 0.2rem;
 	margin: 0.2rem;
-	border-radius: 50%;
+	/*border-radius: 50%;*/
 	/* background-color: #181825; */
 	/*background-color: #1e1e06;*/
 	color: #cdd6f4;
+	background-color: transparent;
 }
 
 #taskbar button:hover {
-	color: #1e1e2e;
+	color: #ffffff;
 	background-color: #cdd6f4;
+	background: rgba(228, 228, 228, 0.3);
 }
 
 #taskbar button.active {
+	color: #ffffff;
 	background-color: #485868;
 }
 
 #taskbar button.fullscreen {
-	background-color: #fa6868;
+	/*background-color: #fa6868;*/
+	background-color: red;
+}
+
+#tray * {
+	box-shadow: none;
+	border: none;
+	border-radius: 6px;
 }
 
 #tray menu {
 	padding: 0.5rem 0.5rem;
-	background-color: #181825;
-	border: 1px solid #555555;
-	opacity: 0.75;
+	/*background-color: #1e1e2e;*/
+	background-color: rgba(36, 36, 54, 0.7);
+	/*border: 1px solid #555555;*/
+	border: 1px solid rgba(92, 92, 92, 0.9);
+	/*opacity: 0.9;*/
 }
 
 #tray menu menuitem {

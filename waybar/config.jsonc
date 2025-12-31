@@ -54,11 +54,11 @@
 		"format": " {text}",
 		"exec": "/usr/bin/cliphist list | wc -l",
 		"interval": 1,
-		"on-click": "/usr/bin/rofi -modi clipboard:~/.local/bin/cliphist-rofi-img -show clipboard -show-icons",
+		"on-click": "/usr/bin/rofi -modi clipboard:$HOME/.local/bin/cliphist-rofi-img -show clipboard -show-icons",
 		"on-click-middle": "/usr/bin/cliphist wipe"
 	},
 	"wlr/taskbar": {
-		"format": "{icon}",
+		"format": "{icon} {app_id}",
 		"icon-size": 16,
 		"icon-theme": "Papirus, hicolor",
 		"tooltip-format": "{title}",
@@ -139,7 +139,7 @@
 		"tooltip-format-disconnected": "Disconnected",
 		"max-length": 50,
 		"on-click": "alacritty --class dotfiles-floating -e nmtui",
-		"on-click-right": "~/dotfiles/.settings/networkmanager.sh"
+		"on-click-right": "$HOME/dotfiles/.settings/networkmanager.sh"
 	},
 	"upower": {
 		"swap-icon-label": false,
