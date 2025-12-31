@@ -18,7 +18,7 @@
 		"custom/notification",
 		"cpu",
 		"memory",
-                "custom/clipboard",
+		"custom/clipboard",
 		"clock",
 		"clock#simpleclock",
 		"tray",
@@ -38,28 +38,29 @@
 	"hyprland/window": {
 		"icon": true,
 		"icon-size": 18,
+		"swap-icon-label": false,
 		"format": "{title}"
 	},
-    "custom/notification": {
-	    "escape": true,
-        "exec": "/usr/bin/dunstctl count history",
-        "format": "󰡟 {text}",
-        "interval": 1,
-        "on-click": "/usr/bin/dunstctl history-pop",
-        "on-click-right": "/usr/bin/dunstctl context",
-        "on-click-middle": "/usr/bin/dunstctl history-clear"
-    },
-    "custom/clipboard": {
-       "format": " {text}",
-       "exec": "/usr/bin/cliphist list | wc -l",
-       "interval": 1,
-       "on-click": "/usr/bin/rofi -modi clipboard:~/.local/bin/cliphist-rofi-img -show clipboard -show-icons",
-       "on-click-middle": "/usr/bin/cliphist wipe"
-    },
+	"custom/notification": {
+		"escape": true,
+		"exec": "/usr/bin/dunstctl count history",
+		"format": "󰡟 {text}",
+		"interval": 1,
+		"on-click": "/usr/bin/dunstctl history-pop",
+		"on-click-right": "/usr/bin/dunstctl context",
+		"on-click-middle": "/usr/bin/dunstctl history-clear"
+	},
+	"custom/clipboard": {
+		"format": " {text}",
+		"exec": "/usr/bin/cliphist list | wc -l",
+		"interval": 1,
+		"on-click": "/usr/bin/rofi -modi clipboard:~/.local/bin/cliphist-rofi-img -show clipboard -show-icons",
+		"on-click-middle": "/usr/bin/cliphist wipe"
+	},
 	"wlr/taskbar": {
 		"format": "{icon}",
 		"icon-size": 16,
-        "icon-theme": "Papirus, hicolor",
+		"icon-theme": "Papirus, hicolor",
 		"tooltip-format": "{title}",
 		"on-click": "activate",
 		"on-click-middle": "close",
@@ -102,29 +103,29 @@
 		"format": "{icon}{usage:3}%",
 		"tooltip": true,
 		"interval": 1,
-        "format-icons": [
-            "<span color='#69ff94'>▁</span>", // green
-            "<span color='#2aa9ff'>▂</span>", // blue
-            "<span color='#f8f8f2'>▃</span>", // white
-            "<span color='#f8f8f2'>▄</span>", // white
-            "<span color='#ffffa5'>▅</span>", // yellow
-            "<span color='#ffffa5'>▆</span>", // yellow
-            "<span color='#ff9977'>▇</span>", // orange
-            "<span color='#dd532e'>█</span>"  // red
-        ]
+		"format-icons": [
+			"<span color='#69ff94'>▁</span>", // green
+			"<span color='#2aa9ff'>▂</span>", // blue
+			"<span color='#f8f8f2'>▃</span>", // white
+			"<span color='#f8f8f2'>▄</span>", // white
+			"<span color='#ffffa5'>▅</span>", // yellow
+			"<span color='#ffffa5'>▆</span>", // yellow
+			"<span color='#ff9977'>▇</span>", // orange
+			"<span color='#dd532e'>█</span>"  // red
+		]
 	},
 	"memory": {
 		"format": "{icon} {used:0.1f}G",
-        "format-icons": [
-            "<span color='#69ff94'>▁</span>", // green
-            "<span color='#2aa9ff'>▂</span>", // blue
-            "<span color='#f8f8f2'>▃</span>", // white
-            "<span color='#f8f8f2'>▄</span>", // white
-            "<span color='#ffffa5'>▅</span>", // yellow
-            "<span color='#ffffa5'>▆</span>", // yellow
-            "<span color='#ff9977'>▇</span>", // orange
-            "<span color='#dd532e'>█</span>"  // red
-        ],
+		"format-icons": [
+			"<span color='#69ff94'>▁</span>", // green
+			"<span color='#2aa9ff'>▂</span>", // blue
+			"<span color='#f8f8f2'>▃</span>", // white
+			"<span color='#f8f8f2'>▄</span>", // white
+			"<span color='#ffffa5'>▅</span>", // yellow
+			"<span color='#ffffa5'>▆</span>", // yellow
+			"<span color='#ff9977'>▇</span>", // orange
+			"<span color='#dd532e'>█</span>"  // red
+		],
 		"tooltip": true
 	},
 	"network": {
@@ -141,6 +142,7 @@
 		"on-click-right": "~/dotfiles/.settings/networkmanager.sh"
 	},
 	"upower": {
+		"swap-icon-label": false,
 		"native-path": "hid-ec:2c:e2:f0:e8:69-battery",
 		"show-icon": true,
 		"icon-size": 11,
@@ -166,6 +168,7 @@
 		"format-muted": "",
 		"format-source": "{volume}% ",
 		"format-source-muted": "",
+	"swap-icon-label": false,
 		"format-icons": {
 			"headphone": " ",
 			"hands-free": " ",
