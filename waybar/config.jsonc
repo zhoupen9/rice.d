@@ -1,5 +1,5 @@
 {
-	"layer": "bottom",
+	"layer": "top",
 	"position": "top",
 	"height": 24,
 	"spacing": 6,
@@ -68,7 +68,8 @@
 			"Alacritty"
 		],
 		"app_ids-mapping": {
-			"firefoxdeveloperedition": "firefox-developer-edition"
+			"firefoxdeveloperedition": "firefox-developer-edition",
+			"steam_app_1329410": "MahjonSoul"
 		},
 		"rewrite": {
 			"Firefox Web Browser": "Firefox"
