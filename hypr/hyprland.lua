@@ -110,7 +110,7 @@ hl.config({
             new_optimizations      = true,
             vibrancy               = 0.02,
             popups                 = true,
-            --popups_ignorealpha     = 0.45,
+            --popups_ignorealpha     = 0.05,
             special                = false,
             input_methods          = true,
             input_methods_ignorealpha = 0,

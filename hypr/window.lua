@@ -10,30 +10,31 @@ hl.window_rule({
     match = {
         class      = "^$",
         title      = "^$",
-        xwayland   = true,
-        float      = true,
-        fullscreen = false,
-        pin        = false,
+        --xwayland   = true,
+        --float      = true,
+        --fullscreen = false,
+        --pin        = false,
     },
     no_focus = true,
+    opacity = "0.3"
 })
 
 hl.window_rule({
     name  = "emacs-opacity",
     match = { class = "emacs" },
-    opacity = "0.8 0.8",
+    opacity = "0.8",
 })
 
 hl.window_rule({
     name  = "nautilus-opacity",
-    match = { class = "org.gnome.Nautilus" },
-    opacity = "0.9 0.9",
+    match = { class = "org.gnome.Nautilus", },
+    opacity = "0.9",
 })
 
 hl.window_rule({
     name  = "zed-opacity",
     match = { class = "dev.zed.Zed" },
-    opacity = "0.9 0.9",
+    opacity = "0.9",
 })
 
 hl.window_rule({
@@ -85,6 +86,13 @@ hl.window_rule({
     no_blur = true,
     opaque  = true,
 })
+
+--hl.window_rule({
+--    name = "wireshark",
+--    match = { class = "^org.wireshark.Wireshark$" },
+--    no_blur = true,
+--    opaque = true,
+--})
 
 hl.window_rule({
     name  = "et-float",
