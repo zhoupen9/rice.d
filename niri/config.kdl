@@ -12,8 +12,8 @@ environment {
 // https://yalter.github.io/niri/Configuration:-Input
 input {
     keyboard {
-	repeat-delay 300 // Delay in milliseconds before repeating starts
-        repeat-rate 45   // Rate in characters per second
+	repeat-delay 300
+	repeat-rate 45
         xkb {
             // You can set rules, model, layout, variant and options.
             // For more information, see xkeyboard-config(7).
@@ -28,7 +28,7 @@ input {
         }
 
         // Enable numlock on startup, omitting this setting disables it.
-        //numlock
+        // numlock
     }
 
     // Next sections include libinput settings.
@@ -42,8 +42,8 @@ input {
         // drag false
         // drag-lock
         natural-scroll
-        // accel-speed 0.2
-        // accel-profile "flat"
+        accel-speed 0.12
+        //accel-profile "flat"
         // scroll-method "two-finger"
         // disabled-on-external-mouse
     }
@@ -51,8 +51,8 @@ input {
     mouse {
         // off
         natural-scroll
-        accel-speed -0.2
-        // accel-profile "flat"
+        accel-speed 0.2
+        accel-profile "flat"
         // scroll-method "no-scroll"
     }
 
@@ -81,18 +81,6 @@ input {
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
-output "DP-2" {
-	mode "3920x2160@60.000"
-	scale 2
-	transform "normal"
-	position x=1920 y=0
-}
-
-output "HDMI-A-1" {
-	mode "1920x1080@60.0000"
-	transform "normal"
-}
-
 /-output "eDP-1" {
     // Uncomment this line to disable this output.
     // off
@@ -123,13 +111,24 @@ output "HDMI-A-1" {
     // automatically.
     position x=1280 y=0
 }
+output "DP-1" {
+	mode "3840x2160@59.997"
+	scale 2
+	position x=0 y=0
+}
+
+output "DP-2" {
+	mode "3840x2160@59.997"
+	scale 2
+	position x=1920 y=0
+}
 
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 10
+    gaps 6
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -177,7 +176,7 @@ layout {
         off
 
         // How many logical pixels the ring extends out from the windows.
-        width 4
+        width 1
 
         // Colors can be set in a variety of ways:
         // - CSS named colors: "red"
@@ -185,13 +184,14 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "#7fc8ff"
+        //active-color "#7fc8ff"
+        active-color "#555555"
 
         // Color of the ring on inactive monitors.
         //
         // The focus ring only draws around the active window, so the only place
         // where you can see its inactive-color is on other monitors.
-        inactive-color "#505050"
+        inactive-color "#595959"
 
         // You can also use gradients. They take precedence over solid colors.
         // Gradients are rendered the same as CSS linear-gradient(angle, from, to).
@@ -216,8 +216,8 @@ layout {
         off
 
         width 2
-        active-color "#ffc87f"
-        inactive-color "#505050"
+        active-color "#ffc87f20"
+        inactive-color "#50505030"
 
         // Color of the border around windows that request your attention.
         urgent-color "#9b0000"
@@ -225,9 +225,9 @@ layout {
         // Gradients can use a few different interpolation color spaces.
         // For example, this is a pastel rainbow gradient via in="oklch longer hue".
         //
-        // active-gradient from="#e5989b" to="#ffb4a2" angle=45 relative-to="workspace-view" in="oklch longer hue"
+        active-gradient from="#e5989b" to="#ffb4a2" angle=45 relative-to="workspace-view" in="oklch longer hue"
 
-        // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
+        inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
     }
 
     // You can enable drop shadows for windows.
@@ -255,10 +255,10 @@ layout {
         // pixels and match the CSS box-shadow properties.
 
         // Softness controls the shadow blur radius.
-        softness 30
+        softness 12
 
         // Spread expands the shadow.
-        spread 5
+        spread 3
 
         // Offset moves the shadow relative to the window.
         offset x=0 y=5
@@ -284,12 +284,12 @@ layout {
 // Note that running niri as a session supports xdg-desktop-autostart,
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
-spawn-at-startup "xwayland-satellite"
-spawn-at-startup "swayidle"
 
-spawn-sh-at-startup "wl-paste --watch cliphist store"
 // This line starts waybar, a commonly used bar for Wayland compositors.
+spawn-at-startup "xwayland-satellite"
 spawn-at-startup "waybar"
+spawn-at-startup "dunst"
+spawn-sh-at-startup "wl-paste --watch cliphist store"
 spawn-sh-at-startup "swaybg -m fill -i /home/zhoupeng/Pictures/wallpaper.jpg"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
@@ -326,6 +326,99 @@ animations {
     // slowdown 3.0
 }
 
+blur {
+   //off
+   passes 4
+   offset 4.0
+}
+
+window-rule {
+    match app-id="^kitty$"
+    opacity 0.85
+    background-effect {
+        blur true
+    }
+}
+
+window-rule {
+    match app-id="^sublime_text$"
+    //opacity 0.8
+    popups {
+	opacity 0.75
+	geometry-corner-radius 6
+        background-effect {
+            blur true
+	}
+   }
+}
+
+window-rule {
+    match app-id="^dev.zap.Zap$"
+    background-effect {
+	blur true
+    }
+    popups {
+	opacity 0.85
+        background-effect {
+            blur true
+	}
+   }
+}
+
+window-rule {
+    match app-id="^dev.zed.Zed$"
+    opacity 0.95
+    background-effect {
+	blur true
+    }
+    popups {
+	opacity 0.95
+        background-effect {
+            blur true
+	}
+   }
+   geometry-corner-radius 8
+}
+
+window-rule {
+    match app-id="^org.wireshark.Wireshark$"
+    opacity 1.0
+    popups {
+	opacity 0.95
+        background-effect {
+            blur true
+	    xray false
+	}
+   }
+}
+
+window-rule {
+    match app-id="^google-chrome$"
+    opacity 1.0
+    popups {
+	opacity 0.75
+        background-effect {
+            blur true
+	}
+        geometry-corner-radius 16
+   }
+   geometry-corner-radius 16
+}
+
+window-rule {
+    match app-id="^Alacritty$"
+    background-effect {
+        blur true
+	xray true
+	noise 0.05
+    }
+}
+
+window-rule {
+    match app-id="^com.alibabainc.dingtalk"
+    open-floating true
+}
+
 // Window rules let you adjust behavior for individual windows.
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Window-Rules
@@ -340,48 +433,6 @@ window-rule {
     default-column-width {}
 }
 
-blur {
-   passes 4
-   offset 4.0
-}
-
-window-rule {
-    match app-id="^kitty$"
-    background-effect {
-        blur true
-	saturation 1.3
-    }
-}
-
-window-rule {
-    match app-id="^dev.warp.Warp$"
-    background-effect {
-	blur true
-    }
-}
-
-window-rule {
-    match app-id="^dev.openwarp.OpenWarp$"
-    background-effect {
-	blur true
-    }
-    popups {
-	opacity 0.85
-        background-effect {
-            blur true
-	}
-   }
-}
-
-window-rule {
-    match app-id="^Alacritty$"
-    background-effect {
-        blur true
-	xray true
-	noise 0.05
-    }
-}
-
 // Open the Firefox picture-in-picture player as floating by default.
 window-rule {
     // This app-id regular expression will work for both:
@@ -389,6 +440,17 @@ window-rule {
     // - Flatpak Firefox (app-id is "org.mozilla.firefox")
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
+}
+
+window-rule {
+    match app-id="^firefox-dev$"
+    popups {
+	opacity 0.45
+        background-effect {
+            blur true
+	}
+	geometry-corner-radius 12
+   }
 }
 
 window-rule {
@@ -406,48 +468,6 @@ window-rule {
 	}
 	geometry-corner-radius 12
    }
-}
-
-// window-rule {
-//     match app-id="^dev.zed.Zed$"
-//     opacity 0.95
-//     background-effect {
-//         blur true
-// 	xray false
-//     }
-//     popups {
-//         background-effect {
-//             blur true
-// 	}
-// 	geometry-corner-radius 12
-//    }
-// }
-
- window-rule {
-     match app-id="^google-chrome$"
-//     opacity 0.95
-//     background-effect {
-//         blur true
-// 	xray false
-//     }
-    geometry-corner-radius 8
-//     popups {
-//         background-effect {
-//             blur true
-// 	}
-// 	geometry-corner-radius 12
-//    }
-}
-
-window-rule {
-    match app-id="steam_app_1329410"
-    open-floating true
-    open-fullscreen false
-    tiled-state true
-    //default-column-width { fixed 1280; }
-    //default-window-height { fixed 800; }
-    //max-width 1280
-    //max-height 800
 }
 
 // Example: block out two password managers from screen capture.
@@ -469,11 +489,29 @@ window-rule {
     clip-to-geometry true
 }
 
+window-rule {
+    match app-id="steam_app_1329410"
+    open-floating true
+    open-fullscreen false
+    tiled-state true
+    //titlebar false
+    //default-column-width { fixed 1280; }
+    //default-window-height { fixed 800; }
+    //max-width 1280
+    //max-height 800
+}
+
 layer-rule {
     match namespace="^waybar$"
     background-effect {
 	blur true
 	xray false
+    }
+    shadow {
+        on
+	softness 20
+	spread 8
+	color "#00000046"
     }
     popups {
 	opacity 0.85
@@ -489,6 +527,12 @@ layer-rule {
     background-effect {
 	blur true
 	xray false
+    }
+    shadow {
+        on
+	softness 8
+	spread 3
+	color "#00000066"
     }
     geometry-corner-radius 12
 }
@@ -508,7 +552,13 @@ layer-rule {
 	blur true
 	xray false
     }
-    geometry-corner-radius 6
+    shadow {
+        on
+	softness 16
+	spread 5
+	color "#00000066"
+    }
+    geometry-corner-radius 8
 }
 
 layer-rule {
@@ -532,32 +582,25 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
+    //Mod+T hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
     Mod+Q hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
+    //Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Mod+D hotkey-overlay-title="Run an Application: rofi" { spawn "rofi" "-show" "drun" "-show-icons"; }
-    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock" "-c" "000000"; }
+    Super+Alt+L hotkey-overlay-title="Lock the Screen" { spawn "loginctl lock-session"; }
+    Mod+L hotkey-overlay-title="Lock screen" { spawn-sh "loginctl lock-session"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
     // For example, this is a standard bind to toggle the screen reader (orca).
     Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
-    Super+Alt+R allow-when-locked=true { spawn-sh "niri-output.sh on"; }
-    Super+Alt+P { power-on-monitors; }
 
     // Example volume keys mappings for PipeWire & WirePlumber.
     // The allow-when-locked=true property makes them work even when the session is locked.
     // Using spawn-sh allows to pass multiple arguments together with the command.
-    // "-l 1.0" limits the volume to 100%.
-    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
     XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
     XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
-
-    // Example media keys mapping using playerctl.
-    // This will work with any MPRIS-enabled media player.
-    XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
-    XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
-    XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
-    XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
 
     // Example brightness key mappings for brightnessctl.
     // You can use regular spawn with multiple arguments too (to avoid going through "sh"),
@@ -576,10 +619,10 @@ binds {
     Mod+Down  { focus-window-down; }
     Mod+Up    { focus-window-up; }
     Mod+Right { focus-column-right; }
-    Mod+H     { focus-column-left; }
-    Mod+J     { focus-window-down; }
-    //Mod+K     { focus-window-up; }
-    Mod+L     { focus-column-right; }
+    Mod+B     { focus-column-left; }
+    Mod+N     { focus-window-down; }
+    Mod+P     { focus-window-up; }
+    //Mod+L     { focus-column-right; }
 
     Mod+Ctrl+Left  { move-column-left; }
     Mod+Ctrl+Down  { move-window-down; }
@@ -734,8 +777,7 @@ binds {
     // Makes the column "fill the rest of the space".
     Mod+Ctrl+F { expand-column-to-available-width; }
 
-    //Mod+C { center-column; }
-    Mod+C { spawn-sh "/usr/bin/rofi -modi clipboard:$HOME/.local/bin/cliphist-rofi-img -show clipboard -show-icons"; }
+    Mod+C { spawn-sh /usr/bin/rofi -modi clipboard:/home/zhoupeng/.local/bin/cliphist-rofi-img -show clipboard -show-icons; }
 
     // Center all fully visible columns on screen.
     Mod+Ctrl+C { center-visible-columns; }
@@ -793,4 +835,5 @@ binds {
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
+    Mod+Shift+O { power-on-monitors; }
 }
