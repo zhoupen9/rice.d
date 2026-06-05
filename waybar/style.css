@@ -22,7 +22,7 @@ button:hover {
 	/* background-color: rgba(24, 24, 37, 0.6); */
 	/*background-color: transparent;*/
 	background: transparent;
-	background-color: rgba(0, 0, 0, 0.2);
+	background-color: rgba(0, 0, 0, 0.8);
 }
 
 #waybar > box {
@@ -63,6 +63,7 @@ button:hover {
 
 #clock,
 #pulseaudio,
+#custom-io,
 #custom-logo,
 #custom-power,
 #custom-spotify,
@@ -84,7 +85,7 @@ button:hover {
 	/* background-color: #1e1e2e; */
 }
 
-#cpu, #memory {
+#cpu, #memory, #custom-io, #custom-notification, #custom-clipboard {
 	font-family: "Monaspace Neon", "MonaspiceNe Nerd Font Propo";
 }
 
@@ -191,6 +192,7 @@ tooltip * {
 	/*border: 1px solid #555555;*/
 	border: 1px solid rgba(92, 92, 92, 0.9);
 	/*opacity: 0.9;*/
+	box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.4);
 }
 
 #tray menu menuitem {
