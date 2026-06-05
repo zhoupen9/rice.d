@@ -353,9 +353,10 @@ blur {
 
 window-rule {
     match app-id="^kitty$"
-    opacity 0.85
+    opacity 0.95
     background-effect {
         blur true
+	//saturation 1
     }
 }
 
