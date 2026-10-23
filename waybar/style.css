@@ -67,6 +67,7 @@ button:hover {
 #custom-power,
 #custom-spotify,
 #custom-notification,
+#custom-idle-lock,
 #cpu,
 #tray,
 #upower,
@@ -84,13 +85,37 @@ button:hover {
 	/* background-color: #1e1e2e; */
 }
 
-#cpu, #memory, #custom-io, #custom-notification, #custom-clipboard {
+#cpu, #memory, #custom-io, #custom-notification, #custom-clipboard, #custom-monocloud, #custom-idle-lock {
 	font-family: "Monaspace Neon", "MonaspiceNe Nerd Font Propo";
 }
 
 #custom-sep {
 	padding: 0px;
 	color: #585b70;
+}
+
+#custom-monocloud {
+	color: #a6e3a1;
+}
+
+#custom-monocloud.offline {
+	color: #6c7086;
+}
+
+#custom-idle-lock {
+	color: #a6e3a1;
+}
+
+#custom-idle-lock.warning {
+	color: #f9e2af;
+}
+
+#custom-idle-lock.critical {
+	color: #f38ba8;
+}
+
+#custom-idle-lock.disabled {
+	color: #6c7086;
 }
 
 window#waybar.empty #window {
@@ -125,6 +150,16 @@ window#waybar.empty #window {
 #pulseaudio.muted {
 	/* color: #a6adc8; */
 	color: red;
+}
+
+#upower {
+    /*flex-shrink: 0;*/
+    min-width: 25px;
+}
+
+#upower label {
+    /*flex-shrink: 0;*/
+    min-width: 25px;
 }
 
 #custom-logo {

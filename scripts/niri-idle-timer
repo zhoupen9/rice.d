@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+#
+# Waybar custom module: countdown until the niri session locks while idle.
+#
+# The countdown length is read from the hypridle listener that runs
+# niri-idle-lock (or loginctl lock-session).  A small wayland helper tracks
+# input idle time with ext-idle-notify-v1 and prints waybar JSON.
+
+set -u
+
+script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+bin="${NIRI_IDLE_WATCH_BIN:-$HOME/.local/bin/niri-idle-watch}"
+state_file="$HOME/.cache/waybar/idle-lock-state"
+
+if [[ ! -x "$bin" || "$script_dir/niri-idle-watch.c" -nt "$bin" ]]; then
+    "$script_dir/build-niri-idle-watch.sh" >/dev/null 2>&1 || {
+        printf '{"text":"󰌾 n/a","class":"disabled","tooltip":"niri-idle-watch is not built. Run %s/build-niri-idle-watch.sh"}\n' "$script_dir"
+        exit 0
+    }
+fi
+
+conf="${HYPRIDLE_CONF:-$HOME/.config/hypr/hypridle.conf}"
+timeout_s=""
+if [[ -r "$conf" ]]; then
+    timeout_s="$(
+        awk '
+            /^[[:space:]]*listener[[:space:]]*\{/ {
+                in_listener = 1
+                timeout = ""
+                is_lock = 0
+            }
+            in_listener {
+                if ($0 ~ /^[[:space:]]*timeout[[:space:]]*=/) {
+                    v = $0
+                    sub(/^[^=]*=[[:space:]]*/, "", v)
+                    sub(/[^0-9].*/, "", v)
+                    if (v != "") timeout = v
+                }
+                if ($0 ~ /on-timeout[[:space:]]*=.*(niri-idle-lock|loginctl[[:space:]]+lock-session)/)
+                    is_lock = 1
+                if ($0 ~ /^[[:space:]]*\}/) {
+                    if (is_lock && timeout != "") {
+                        print timeout
+                        exit
+                    }
+                    in_listener = 0
+                }
+            }
+        ' "$conf" 2>/dev/null
+    )"
+fi
+
+case "$timeout_s" in
+    '' | *[!0-9]*) timeout_s="${NIRI_IDLE_LOCK_TIMEOUT:-300}" ;;
+esac
+
+exec "$bin" "$timeout_s" "$state_file"

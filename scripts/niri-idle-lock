@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#
+# hypridle on-timeout hook: lock the niri session unless the waybar toggle
+# has disabled automatic idle locking.
+#
+# The toggle state is also shown by the niri-idle-timer waybar module.
+
+set -u
+
+state_file="$HOME/.cache/waybar/idle-lock-state"
+
+if [[ "$(cat "$state_file" 2>/dev/null || echo on)" == "off" ]]; then
+    exit 0
+fi
+
+exec loginctl lock-session

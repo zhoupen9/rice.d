@@ -18,8 +18,10 @@
 		"custom/notification",
 		"cpu",
 		"memory",
+        "custom/monocloud",
 		"custom/io",
 		"custom/clipboard",
+		"custom/idle-lock",
 		"clock",
 		"clock#simpleclock",
 		"tray",
@@ -59,6 +61,13 @@
 		"interval": 1,
 		"escape": true
 	},
+	"custom/monocloud": {
+		"format": " {text}",
+		"return-type": "json",
+		"exec": "$HOME/.local/bin/monocloud_usage.sh",
+		"interval": 3600,
+		"escape": true
+	},
 	"custom/notification": {
 		"escape": true,
 		"exec": "/usr/bin/dunstctl count history",
@@ -67,6 +76,12 @@
 		"on-click": "/usr/bin/dunstctl history-pop",
 		"on-click-right": "/usr/bin/dunstctl context",
 		"on-click-middle": "/usr/bin/dunstctl history-clear"
+	},
+	"custom/idle-lock": {
+		"exec": "$HOME/.config/rice.d/scripts/niri-idle-timer",
+		"return-type": "json",
+		"exec-on-event": false,
+		"on-click": "$HOME/.config/rice.d/scripts/niri-idle-toggle"
 	},
 	"custom/clipboard": {
 		"format": " {text}",
@@ -83,10 +98,12 @@
 		"on-click": "activate",
 		"on-click-middle": "close",
 		"ignore-list": [
-			"Alacritty"
 		],
 		"app_ids-mapping": {
-			"firefoxdeveloperedition": "firefox-developer-edition"
+			"firefoxdeveloperedition": "firefox-developer-edition",
+            "deepseek-ai-dsh-electron": "io.deepseek.harness",
+            "jetbrains-datagrip": "jetbrains-datagrip",
+            "jetbrains-datagrip-c640dbd7-3362-4d41-a184-f373234f88d6": "jetbrains-datagrip"
 		},
 		"rewrite": {
 			"Firefox Web Browser": "Firefox"
@@ -161,7 +178,7 @@
 	},
 	"upower": {
 		"swap-icon-label": false,
-		"native-path": "hid-ec:2c:e2:f0:e8:69-battery",
+		"native-path": "hid-ec:2c:e2:f0:e8:69-battery-144",
 		"show-icon": true,
 		"icon-size": 11,
 		"hide-if-empty": true,

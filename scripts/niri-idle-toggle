@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+#
+# Toggle automatic idle screen locking on/off.
+#
+# The state is consumed by niri-idle-watch (the waybar countdown) and by
+# niri-idle-lock (the hypridle on-timeout hook).  Manual locking still works.
+
+set -u
+
+state_dir="$HOME/.cache/waybar"
+state_file="$state_dir/idle-lock-state"
+
+mkdir -p "$state_dir"
+
+current="$(cat "$state_file" 2>/dev/null || echo on)"
+case "$current" in
+    off) new_state="on" ;;
+    *) new_state="off" ;;
+esac
+
+tmp_file="$state_file.tmp.$$"
+printf '%s\n' "$new_state" >"$tmp_file"
+mv -f "$tmp_file" "$state_file"
+exit 0

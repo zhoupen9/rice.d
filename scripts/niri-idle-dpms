@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+#
+# hypridle on-timeout hook: power off the monitors unless the waybar toggle
+# has disabled automatic idle locking.
+#
+# The 300s backlight dim is intentionally left independent: dimming still
+# happens, but the display will not be powered off while idle lock is off.
+
+set -u
+
+state_file="$HOME/.cache/waybar/idle-lock-state"
+
+if [[ "$(cat "$state_file" 2>/dev/null || echo on)" == "off" ]]; then
+    exit 0
+fi
+
+exec niri msg action power-off-monitors
