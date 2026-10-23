@@ -1,55 +1,29 @@
 {
-	"modules-left": [
-		"niri/workspaces",
-		"niri/window"
-	],
-	"niri/workspaces": {
-		"icon": true,
-		"icon-size": 18,
-		"format": "{icon}",
-		"format-icons": {
-			// Named workspaces
-			// (you need to configure them in niri)
-			"browser": "",
-			"discord": "",
-			"chat": "<b></b>",
-			// Icons by state
-			//"active": "",
-			"active": "󱎴"
-			//"default": ""
-			//"default": "<span color=\"gray\">󰍹</span>"
-		}
-	},
-	"niri/window": {
-		"icon": true,
-		"icon-size": 18,
-		"swap-icon-label": false,
-		"format": "{title}"
-	},
-	"custom/idle-lock": {
-		"exec": "$HOME/.config/rice.d/scripts/niri-idle-timer",
-		"return-type": "json",
-		"exec-on-event": false,
-		"on-click": "$HOME/.config/rice.d/scripts/niri-idle-toggle"
-	},
-	"upower": {
-		"swap-icon-label": false,
-		"native-path": "hid-ec:2c:e2:f0:e8:69-battery-144",
-		"show-icon": true,
-		"icon-size": 11,
-		"hide-if-empty": true,
-		"tooltip": true,
-		"tooltip-spacing": 15
-	},
-	"battery": {
-		"states": {
-			"warning": 20,
-			"critical": 10
-		},
-		"format": "{icon} {capacity}%",
-		"format-charging": "  {capacity}%",
-		"format-plugged": "  {capacity}%",
-		"format-alt": "{icon} {time}",
-		"format-icons": [" ", " ", " ", " ", " "]
-	}
+  "modules-left": [
+    "niri/workspaces",
+    "niri/window"
+  ],
+  "niri/workspaces": {
+    "icon": true,
+    "icon-size": 18,
+    "format": "{icon}",
+    "format-icons": {
+      // Named workspaces
+      // (you need to configure them in niri)
+      "browser": "",
+      "discord": "",
+      "chat": "<b></b>",
+      // Icons by state
+      //"active": "",
+      "active": "󱎴"
+      //"default": ""
+      //"default": "<span color=\"gray\">󰍹</span>"
+    }
+  },
+  "niri/window": {
+    "icon": true,
+    "icon-size": 18,
+    "swap-icon-label": false,
+    "format": "{title}"
+  }
 }
