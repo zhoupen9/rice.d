@@ -1,0 +1,28 @@
+{
+	"modules-left": [
+		"hyprland/workspaces",
+		"hyprland/window"
+	],
+	"hyprland/workspaces": {
+		"on-click": "activate",
+		"format": "{id}",
+		"all-outputs": true,
+		"disable-scroll": false,
+		"active-only": false
+	},
+	"hyprland/window": {
+		"icon": true,
+		"icon-size": 18,
+		"swap-icon-label": false,
+		"format": "{title}"
+	},
+	"upower": {
+		"swap-icon-label": false,
+		"native-path": "hid-ec:2c:e2:f0:e8:69-battery",
+		"show-icon": true,
+		"icon-size": 11,
+		"hide-if-empty": true,
+		"tooltip": true,
+		"tooltip-spacing": 15
+	}
+}

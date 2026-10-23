@@ -1,4 +1,7 @@
 {
+    "include": [
+      "niri.jsonc"
+    ],
 	"layer": "top",
 	"position": "top",
 	"height": 24,
@@ -7,10 +10,6 @@
 	"gtk-layer-shell": true,
 	"passthrough": false,
 	"fixed-center": true,
-	"modules-left": [
-		"niri/workspaces",
-		"niri/window"
-	],
 	"modules-center": [
 		"wlr/taskbar"
 	],
@@ -31,29 +30,6 @@
 		"pulseaudio",
 		"custom/power"
 	],
-	"niri/workspaces": {
-		"icon": true,
-		"icon-size": 18,
-		"format": "{icon}",
-		"format-icons": {
-			// Named workspaces
-			// (you need to configure them in niri)
-			"browser": "",
-			"discord": "",
-			"chat": "<b></b>",
-			// Icons by state
-			//"active": "",
-			"active": "󱎴"
-			//"default": ""
-			//"default": "<span color=\"gray\">󰍹</span>"
-		}
-	},
-	"niri/window": {
-		"icon": true,
-		"icon-size": 18,
-		"swap-icon-label": false,
-		"format": "{title}"
-	},
 	"custom/io": {
 		"format": "{}",
 		"return-type": "json",
@@ -175,15 +151,6 @@
 		"max-length": 50,
 		"on-click": "alacritty --class dotfiles-floating -e nmtui",
 		"on-click-right": "$HOME/dotfiles/.settings/networkmanager.sh"
-	},
-	"upower": {
-		"swap-icon-label": false,
-		"native-path": "hid-ec:2c:e2:f0:e8:69-battery-144",
-		"show-icon": true,
-		"icon-size": 11,
-		"hide-if-empty": true,
-		"tooltip": true,
-		"tooltip-spacing": 15
 	},
 	"battery": {
 		"states": {
