@@ -102,6 +102,14 @@ button:hover {
 	color: #6c7086;
 }
 
+#custom-monocloud.warning {
+	color: #f9e2af;
+}
+
+#custom-monocloud.critical {
+	color: #f38ba8;
+}
+
 #custom-idle-lock {
 	color: #a6e3a1;
 }

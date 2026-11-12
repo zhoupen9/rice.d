@@ -7,6 +7,17 @@ This repository contains configurations for ricing.
 ## waybar
 Waybar configurations.
 
+### monocloud subscription usage
+`custom/monocloud` shows the current subscription usage and days left.  Hovering
+it opens a tooltip with a usage gauge, remaining quota, up/down traffic and the
+expiry date (`scripts/monocloud-usage.sh`).  The module turns yellow at 80% and
+red at 95% usage or once the subscription has expired; when the endpoint is
+unreachable the last known reading is shown greyed out as `offline`.
+
+The script reads the URL (which contains a credential) from `MONOCLOUD_URL`,
+falling back to the built-in default.  Export it from a file that is not
+versioned if the credential should stay out of git.
+
 ### niri idle-lock countdown
 `custom/idle-lock` shows the countdown until the niri session locks while idle
 and toggles automatic idle locking when clicked.  It reads the timeout from the
